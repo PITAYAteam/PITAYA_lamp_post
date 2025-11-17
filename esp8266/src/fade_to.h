@@ -30,11 +30,16 @@ void fade_to()
     {
       to = 0;
       state = 9;
+      DEBUGSR = true;
     }
   }
 
   if (cmd != 6)
   {
+#ifdef DEBUGSTATE
+    Serial.print("send play_seq mp3 fade to : ");
+    Serial.println(millis());
+#endif
     sendCommand(CMD_FOLDER_CYCLE, 0x0301);
     delay(temp_mp3);
     cmd = 6;
